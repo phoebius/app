@@ -1,0 +1,7 @@
+.*
+!.keepdir
+!.gitignore
+!.mailmap
+
+tmp/*
+!tmp/.keepdir
