@@ -23,11 +23,8 @@ class StandaloneSiteApplication extends SiteApplication
 {
 	function __construct()
 	{
-		$router = new ChainedRouter;
-		
-		// TODO: fill the router here
-		
-		parent::__construct($router);
+		parent::__construct(new ApplicationRouter);
 	}
+}
 
 ?>

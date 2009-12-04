@@ -16,26 +16,36 @@
  *
  ************************************************************************************************/
 
-define('APP_ROOT', join(
-		DIRECTORY_SEPARATOR,
-		array_slice(
-			explode(DIRECTORY_SEPARATOR, dirname(__FILE__)), 0, -1
-		)
-	)
-);
+class CustomPageController extends ActionBasedController
+{
+	function action_404()
+	{
+		$title = 'An error occured';
+		$contents = 'The requested page does not exist';
 
-require ( APP_ROOT . '/phoebius/etc/app.init.php' );
-require ( APP_ROOT . '/etc/config.php' );
+		return $this->view(
+			'content',
+			array(
+				'title' => $title,
+				'contents' => $contents,
+				'isError' => true
+			)
+		);
+	}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+	function action_index()
+	{
+		$title = 'My Application';
+		$contents = 'Introducing one more application at the top Phoebius Framework';
 
-require
-	APP_ROOT . DIRECTORY_SEPARATOR .
-	'cfg' . DIRECTORY_SEPARATOR .
-	APP_SLOT . DIRECTORY_SEPARATOR .
-	'config.php';
-
-$application = new StandaloneSiteApplication();
-$application->run();
+		return $this->view(
+			'content',
+			array(
+				'title' => $title,
+				'contents' => $contents
+			)
+		);
+	}
+}
 
 ?>

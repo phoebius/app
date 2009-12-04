@@ -16,26 +16,33 @@
  *
  ************************************************************************************************/
 
-define('APP_ROOT', join(
-		DIRECTORY_SEPARATOR,
-		array_slice(
-			explode(DIRECTORY_SEPARATOR, dirname(__FILE__)), 0, -1
-		)
-	)
-);
+class ApplicationRouter extends ChainedRouter
+{
+	function __construct()
+	{
+		parent::__construct(new MvcDispatcher());
 
-require ( APP_ROOT . '/phoebius/etc/app.init.php' );
-require ( APP_ROOT . '/etc/config.php' );
+		$this->fillRoutes();
+	}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+	protected function fillRoutes()
+	{
+		$this->route(
+			'index',
+			'/',
+			array('controller' => 'CustomPage', 'action' => 'index')
+		);
 
-require
-	APP_ROOT . DIRECTORY_SEPARATOR .
-	'cfg' . DIRECTORY_SEPARATOR .
-	APP_SLOT . DIRECTORY_SEPARATOR .
-	'config.php';
+		$fallbackRoute = new Route(
+			$this->getDefaultDispatcher(),
+			ParameterImportRule::multiple(array(
+				'controller' => 'CustomPage',
+				'action' => '404'
+			))
+		);
 
-$application = new StandaloneSiteApplication();
-$application->run();
+		$this->setFallbackRoute($fallbackRoute);
+	}
+}
 
 ?>

@@ -16,26 +16,15 @@
  *
  ************************************************************************************************/
 
-define('APP_ROOT', join(
-		DIRECTORY_SEPARATOR,
-		array_slice(
-			explode(DIRECTORY_SEPARATOR, dirname(__FILE__)), 0, -1
-		)
-	)
-);
-
-require ( APP_ROOT . '/phoebius/etc/app.init.php' );
-require ( APP_ROOT . '/etc/config.php' );
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-require
-	APP_ROOT . DIRECTORY_SEPARATOR .
-	'cfg' . DIRECTORY_SEPARATOR .
-	APP_SLOT . DIRECTORY_SEPARATOR .
-	'config.php';
-
-$application = new StandaloneSiteApplication();
-$application->run();
+// "title" and "contents" are expected parameters and MUST be presented in a model
+// "isError" is optional parameter thus accessed using the "@" operator
 
 ?>
+
+<?php if (@$this->isError) { ?>
+	<h1><font color="red"><?=$this->title?></font></h1>
+<?php } else { ?>
+	<h1><?=$this->title?></h1>
+<?php } ?>
+
+<?=$this->contents?>
