@@ -16,15 +16,15 @@
  *
  ************************************************************************************************/
 
-// "title" and "contents" are expected parameters and MUST be presented in a model
+// "page" is the expected parameter and MUST be presented in a model
 // "isError" is optional parameter thus accessed using the "@" operator
 
 ?>
 
 <?php if (@$this->isError) { ?>
-	<h1><font color="red"><?=$this->title?></font></h1>
+	<h1><font color="red"><?=$this->page->getTitle()?></font></h1>
 <?php } else { ?>
-	<h1><?=$this->title?></h1>
+	<h1><?=$this->page->getTitle()?></h1>
 <?php } ?>
 
-<?=$this->contents?>
+<?=$this->page->getText()?>

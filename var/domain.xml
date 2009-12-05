@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * ***********************************************************************************************
+ *
+ * Phoebius Framework
+ *
+ * **********************************************************************************************
+ *
+ * Copyright (c) 2009 phoebius.org
+ *
+ * All rights reserved.
+ *
+ *************************************************************************************************
+-->
+
+<!DOCTYPE domain SYSTEM "../phoebius/share/Orm/Domain/Meta/Xml/abstract.dtd">
+
+<domain db-schema="default">
+	<entities>
+		<entity name="ContentPage" has-dao="true">
+			<properties>
+				<identifier/>
+				<property name="title" type="String"/>
+				<property name="text" type="String"/>
+			</properties>
+		</entity>
+	</entities>
+</domain>

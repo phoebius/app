@@ -20,14 +20,14 @@ class CustomPageController extends ActionBasedController
 {
 	function action_404()
 	{
-		$title = 'An error occured';
-		$contents = 'The requested page does not exist';
+		$page = new ContentPage;
+		$page->setTitle('An error occured');
+		$page->setText('The requested page does not exist');
 
 		return $this->view(
 			'content',
 			array(
-				'title' => $title,
-				'contents' => $contents,
+				'page' => $page,
 				'isError' => true
 			)
 		);
@@ -35,14 +35,14 @@ class CustomPageController extends ActionBasedController
 
 	function action_index()
 	{
-		$title = 'My Application';
-		$contents = 'Introducing one more application at the top Phoebius Framework';
+		$page = new ContentPage;
+		$page->setTitle('My Application');
+		$page->setText('Introducing one more application at the top Phoebius Framework');
 
 		return $this->view(
 			'content',
 			array(
-				'title' => $title,
-				'contents' => $contents
+				'page' => $page,
 			)
 		);
 	}
