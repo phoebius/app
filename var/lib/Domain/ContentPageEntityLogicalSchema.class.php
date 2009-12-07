@@ -49,8 +49,8 @@ final class ContentPageEntityLogicalSchema implements ILogicallySchematic
 	{
 		return array(
 			'id' => $this->getIdentifier(),
-			'title' => new OrmProperty('title', array('title'), new FundamentalPropertyType(new DBType(DBType::VARCHAR, false, null, null, null, false)), new OrmPropertyVisibility(OrmPropertyVisibility::FULL), new AssociationMultiplicity(AssociationMultiplicity::EXACTLY_ONE), false, false),
-			'text' => new OrmProperty('text', array('text'), new FundamentalPropertyType(new DBType(DBType::VARCHAR, false, null, null, null, false)), new OrmPropertyVisibility(OrmPropertyVisibility::FULL), new AssociationMultiplicity(AssociationMultiplicity::EXACTLY_ONE), false, false)
+			'title' => new OrmProperty('title', array('title'), new FundamentalPropertyType(new DBType(DBType::VARCHAR, false, 255, null, null, false)), new OrmPropertyVisibility(OrmPropertyVisibility::FULL), new AssociationMultiplicity(AssociationMultiplicity::EXACTLY_ONE), false, false),
+			'text' => new OrmProperty('text', array('text'), new FundamentalPropertyType(new DBType(DBType::VARCHAR, false, 255, null, null, false)), new OrmPropertyVisibility(OrmPropertyVisibility::FULL), new AssociationMultiplicity(AssociationMultiplicity::EXACTLY_ONE), false, false)
 		);
 	}
 

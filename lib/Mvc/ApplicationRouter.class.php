@@ -27,12 +27,21 @@ class ApplicationRouter extends ChainedRouter
 
 	protected function fillRoutes()
 	{
+		// define route for the custom page
+//		$this->route(
+//			'customPage',
+//			'/:controller/:action/',
+//			array()
+//		);
+
+		// define route for the front page
 		$this->route(
 			'index',
 			'/',
 			array('controller' => 'CustomPage', 'action' => 'index')
 		);
 
+		// set handler for unrouted requests (a fallback route)
 		$fallbackRoute = new Route(
 			$this->getDefaultDispatcher(),
 			ParameterImportRule::multiple(array(
