@@ -24,7 +24,7 @@ define('APP_ROOT', join(
 	)
 );
 
-require ( APP_ROOT . '/phoebius/etc/app.init.php' );
+require ( APP_ROOT . '/externals/phoebius/etc/app.init.php' );
 require ( APP_ROOT . '/etc/config.php' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
